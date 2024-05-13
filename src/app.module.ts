@@ -2,7 +2,8 @@ import { Module } from '@nestjs/common';
 import { ConfigModule } from '@nestjs/config';
 
 import { GrpcModule } from './grpc/grpc.module';
-import { AuthV1Module } from './auth/v1/auth.v1.module';
+import { AuthV1Module } from './auth/v1/auth.module';
+import { UserV1Module } from './user/v1/user.module';
 
 @Module({
   imports: [
@@ -11,8 +12,8 @@ import { AuthV1Module } from './auth/v1/auth.v1.module';
       isGlobal: true,
     }),
     GrpcModule,
-    //Auth
     AuthV1Module,
+    UserV1Module,
   ],
 })
 export class AppModule {}
