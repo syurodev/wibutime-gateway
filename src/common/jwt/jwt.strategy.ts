@@ -19,14 +19,9 @@ export class JwtStrategy extends PassportStrategy(Strategy, 'jwt') {
   }
 
   async validate(payload: UserDataResponse | null) {
-    const existingUser = await this.userService.findOne(
-      payload.email,
-      false,
-      false,
-      true,
-      true,
-    );
-
-    return existingUser.status === HttpStatus.OK ? existingUser.data : null;
+    console.log(payload);
+    return payload.backend_token.access_token
+      ? payload.backend_token.access_token
+      : null;
   }
 }
